@@ -1,0 +1,274 @@
+VERSION ""
+
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+    CAT_DEF_
+    CAT_
+    FILTER
+    BA_DEF_DEF_
+    EV_DATA_
+    ENVVAR_DATA_
+    SGTYPE_
+    SGTYPE_VAL_
+    BA_DEF_SGTYPE_
+    BA_DEF_SGTYPE_VAL_
+    BA_DEF_DEF_REL_
+    BA_DEF_REL_
+    BA_DEF_VAL_
+    BA_REL_
+    BA_DEF_DEF_REL_
+    BU_SG_REL_
+    BU_EV_REL_
+    BU_BO_REL_
+    SG_MUL_VAL_
+
+BS_:
+
+BU_: Engine_ECU Dashboard_ECU ABS_ECU Transmission_ECU Body_ECU Gateway_ECU
+
+BO_ 201 EngineData: 8 Engine_ECU
+ SG_ Engine_RPM       : 0|16@1+  (0.25,0)      [0|8000]    "RPM"    Vector__XXX
+ SG_ Coolant_Temp     : 16|8@1+  (1,-40)        [-40|215]   "degC"   Vector__XXX
+ SG_ Engine_Status    : 24|1@1+  (1,0)          [0|1]       ""       Vector__XXX
+ SG_ Throttle_Pos     : 25|8@1+  (0.392156,0)   [0|100]     "%"      Vector__XXX
+ SG_ Engine_Load      : 33|8@1+  (0.392156,0)   [0|100]     "%"      Vector__XXX
+
+BO_ 416 VehicleSpeed: 8 ABS_ECU
+ SG_ Vehicle_Speed    : 0|16@1+  (0.01,0)       [0|300]     "km/h"   Vector__XXX
+ SG_ Brake_Status     : 16|1@1+  (1,0)          [0|1]       ""       Vector__XXX
+ SG_ Door_Status      : 17|1@1+  (1,0)          [0|1]       ""       Vector__XXX
+ SG_ ABS_Active       : 18|1@1+  (1,0)          [0|1]       ""       Vector__XXX
+ SG_ Wheel_Speed_FL   : 19|13@1+ (0.01,0)       [0|300]     "km/h"   Vector__XXX
+ SG_ Wheel_Speed_FR   : 32|13@1+ (0.01,0)       [0|300]     "km/h"   Vector__XXX
+
+BO_ 432 TransmissionData: 8 Transmission_ECU
+ SG_ Gear_Position       : 0|4@1+  (1,0)        [0|8]       ""       Vector__XXX
+ SG_ Transmission_Temp   : 8|8@1+  (1,-40)      [-40|150]   "degC"   Vector__XXX
+ SG_ Torque_Converter    : 16|8@1+ (0.392156,0) [0|100]     "%"      Vector__XXX
+ SG_ Shift_Status        : 24|2@1+ (1,0)        [0|3]       ""       Vector__XXX
+
+BO_ 512 FuelData: 4 Engine_ECU
+ SG_ Fuel_Level          : 0|8@1+  (0.392156,0) [0|100]     "%"      Vector__XXX
+ SG_ Fuel_Pressure       : 8|8@1+  (0.5,0)      [0|100]     "bar"    Vector__XXX
+ SG_ Fuel_Consumption    : 16|8@1+ (0.1,0)      [0|25]      "L/100km" Vector__XXX
+
+BO_ 640 BodyControl: 8 Body_ECU
+ SG_ Door_FL_Status      : 0|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Door_FR_Status      : 1|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Door_RL_Status      : 2|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Door_RR_Status      : 3|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Headlight_Status    : 4|2@1+  (1,0)        [0|3]       ""       Vector__XXX
+ SG_ Wiper_Status        : 6|2@1+  (1,0)        [0|3]       ""       Vector__XXX
+ SG_ Horn_Status         : 8|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Seat_Belt_Driver    : 9|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Seat_Belt_Passenger : 10|1@1+ (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Airbag_Status       : 11|2@1+ (1,0)        [0|3]       ""       Vector__XXX
+
+BO_ 768 DiagnosticsData: 8 Gateway_ECU
+ SG_ DTC_Count           : 0|8@1+  (1,0)        [0|255]     ""       Vector__XXX
+ SG_ Battery_Voltage     : 8|8@1+  (0.1,0)      [0|25]      "V"      Vector__XXX
+ SG_ Bus_Load            : 16|8@1+ (0.392156,0) [0|100]     "%"      Vector__XXX
+ SG_ ECU_Temp            : 24|8@1+ (1,-40)      [-40|125]   "degC"   Vector__XXX
+
+BO_ 896 ADASData: 8 Gateway_ECU
+ SG_ Lane_Departure      : 0|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Collision_Warning   : 1|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Adaptive_Cruise     : 2|1@1+  (1,0)        [0|1]       ""       Vector__XXX
+ SG_ Radar_Distance      : 8|16@1+ (0.01,0)     [0|200]     "m"      Vector__XXX
+ SG_ Camera_Status       : 24|2@1+ (1,0)        [0|3]       ""       Vector__XXX
+
+BO_ 1024 SteeringData: 8 Dashboard_ECU
+ SG_ Steering_Angle      : 0|16@1+ (0.1,-3276.8)[-780|780]  "deg"    Vector__XXX
+ SG_ Steering_Torque     : 16|8@1+ (0.1,-12.7)  [-12.7|12.7]"Nm"    Vector__XXX
+ SG_ Steering_Speed      : 24|8@1+ (1,0)        [0|255]     "deg/s"  Vector__XXX
+
+CM_ BU_ Engine_ECU       "Engine Electronic Control Unit — manages fuel, RPM, temperature";
+CM_ BU_ Dashboard_ECU    "Dashboard ECU — displays vehicle info and manages steering inputs";
+CM_ BU_ ABS_ECU          "Anti-lock Braking System ECU — manages wheel speed and braking";
+CM_ BU_ Transmission_ECU "Transmission ECU — controls gear shifts and torque converter";
+CM_ BU_ Body_ECU         "Body Control Module — manages doors, lights, wipers, belts";
+CM_ BU_ Gateway_ECU      "Central Gateway — bridges and routes CAN messages across domains";
+
+CM_ BO_ 201  "Engine data frame — transmitted every 100ms by Engine_ECU";
+CM_ BO_ 416  "Vehicle speed and brake data — transmitted every 10ms by ABS_ECU";
+CM_ BO_ 432  "Transmission state — transmitted every 10ms by Transmission_ECU";
+CM_ BO_ 512  "Fuel system data — transmitted every 100ms by Engine_ECU";
+CM_ BO_ 640  "Body control status — transmitted every 100ms by Body_ECU";
+CM_ BO_ 768  "Diagnostics and gateway data — transmitted every 500ms by Gateway_ECU";
+CM_ BO_ 896  "ADAS sensor data — transmitted every 50ms by Gateway_ECU";
+CM_ BO_ 1024 "Steering system data — transmitted every 10ms by Dashboard_ECU";
+
+CM_ SG_ 201 Engine_RPM       "Engine speed in RPM. Range: 0-8000. Scale: 0.25. Anomaly if > 8000.";
+CM_ SG_ 201 Coolant_Temp     "Engine coolant temperature. Range: -40 to 215 degC. Offset: -40.";
+CM_ SG_ 201 Engine_Status    "Engine ON/OFF status. 0=OFF, 1=RUNNING.";
+CM_ SG_ 201 Throttle_Pos     "Throttle pedal position as percentage. 0=closed, 100=fully open.";
+CM_ SG_ 201 Engine_Load      "Engine load as percentage of maximum torque output.";
+
+CM_ SG_ 416 Vehicle_Speed    "Vehicle speed in km/h. Range: 0-300. Scale: 0.01.";
+CM_ SG_ 416 Brake_Status     "Brake pedal status. 0=OFF (not pressed), 1=ON (pressed).";
+CM_ SG_ 416 Door_Status      "Any door open status. 0=CLOSED, 1=OPEN.";
+CM_ SG_ 416 ABS_Active       "ABS activation flag. 0=inactive, 1=active.";
+CM_ SG_ 416 Wheel_Speed_FL   "Front-left wheel speed in km/h.";
+CM_ SG_ 416 Wheel_Speed_FR   "Front-right wheel speed in km/h.";
+
+CM_ SG_ 432 Gear_Position    "Current gear. 0=PARK, 1=REVERSE, 2=NEUTRAL, 3=DRIVE, 4-8=Manual.";
+CM_ SG_ 432 Transmission_Temp "Transmission fluid temperature. Range: -40 to 150 degC.";
+CM_ SG_ 432 Torque_Converter  "Torque converter lockup percentage.";
+CM_ SG_ 432 Shift_Status      "Shift state. 0=stable, 1=upshift, 2=downshift, 3=error.";
+
+CM_ SG_ 512 Fuel_Level       "Fuel tank level as percentage. 0=empty, 100=full.";
+CM_ SG_ 512 Fuel_Pressure    "Fuel rail pressure in bar. Range: 0-100.";
+CM_ SG_ 512 Fuel_Consumption "Instantaneous fuel consumption in L/100km.";
+
+CM_ SG_ 640 Door_FL_Status   "Front-left door. 0=CLOSED, 1=OPEN.";
+CM_ SG_ 640 Door_FR_Status   "Front-right door. 0=CLOSED, 1=OPEN.";
+CM_ SG_ 640 Door_RL_Status   "Rear-left door. 0=CLOSED, 1=OPEN.";
+CM_ SG_ 640 Door_RR_Status   "Rear-right door. 0=CLOSED, 1=OPEN.";
+CM_ SG_ 640 Headlight_Status "0=OFF, 1=Parking, 2=Low beam, 3=High beam.";
+CM_ SG_ 640 Wiper_Status     "0=OFF, 1=Intermittent, 2=Low speed, 3=High speed.";
+CM_ SG_ 640 Horn_Status      "Horn state. 0=OFF, 1=ON.";
+CM_ SG_ 640 Seat_Belt_Driver    "Driver seat belt. 0=unfastened, 1=fastened.";
+CM_ SG_ 640 Seat_Belt_Passenger "Passenger seat belt. 0=unfastened, 1=fastened.";
+CM_ SG_ 640 Airbag_Status    "0=normal, 1=deployed, 2=fault, 3=disabled.";
+
+CM_ SG_ 768 DTC_Count        "Number of active Diagnostic Trouble Codes.";
+CM_ SG_ 768 Battery_Voltage  "12V battery voltage. Normal range: 11.5-14.5V.";
+CM_ SG_ 768 Bus_Load         "CAN bus load percentage. Anomaly if > 80%.";
+CM_ SG_ 768 ECU_Temp         "Gateway ECU internal temperature.";
+
+CM_ SG_ 896 Lane_Departure   "Lane departure warning. 0=OK, 1=WARNING.";
+CM_ SG_ 896 Collision_Warning "Forward collision warning. 0=OK, 1=WARNING.";
+CM_ SG_ 896 Adaptive_Cruise  "Adaptive cruise control. 0=inactive, 1=active.";
+CM_ SG_ 896 Radar_Distance   "Distance to front object in metres. Range: 0-200m.";
+CM_ SG_ 896 Camera_Status    "0=OFF, 1=initialising, 2=active, 3=fault.";
+
+CM_ SG_ 1024 Steering_Angle  "Steering wheel angle in degrees. Negative=left, Positive=right.";
+CM_ SG_ 1024 Steering_Torque "Torque applied to steering wheel in Nm.";
+CM_ SG_ 1024 Steering_Speed  "Rate of steering wheel rotation in deg/s.";
+
+BA_DEF_ BO_ "GenMsgCycleTime" INT 0 10000;
+BA_DEF_ BO_ "GenMsgSendType"  STRING;
+BA_DEF_ SG_ "GenSigStartValue" FLOAT 0 100000;
+
+BA_DEF_DEF_ "GenMsgCycleTime" 100;
+BA_DEF_DEF_ "GenMsgSendType"  "Cyclic";
+BA_DEF_DEF_ "GenSigStartValue" 0;
+
+BA_ "GenMsgCycleTime" BO_ 201  100;
+BA_ "GenMsgCycleTime" BO_ 416  10;
+BA_ "GenMsgCycleTime" BO_ 432  10;
+BA_ "GenMsgCycleTime" BO_ 512  100;
+BA_ "GenMsgCycleTime" BO_ 640  100;
+BA_ "GenMsgCycleTime" BO_ 768  500;
+BA_ "GenMsgCycleTime" BO_ 896  50;
+BA_ "GenMsgCycleTime" BO_ 1024 10;
+
+BA_ "GenMsgSendType" BO_ 201  "Cyclic";
+BA_ "GenMsgSendType" BO_ 416  "Cyclic";
+BA_ "GenMsgSendType" BO_ 432  "Cyclic";
+BA_ "GenMsgSendType" BO_ 512  "Cyclic";
+BA_ "GenMsgSendType" BO_ 640  "Cyclic";
+BA_ "GenMsgSendType" BO_ 768  "Cyclic";
+BA_ "GenMsgSendType" BO_ 896  "Cyclic";
+BA_ "GenMsgSendType" BO_ 1024 "Cyclic";
+
+VAL_ 201 Engine_Status
+    0 "OFF"
+    1 "RUNNING" ;
+
+VAL_ 416 Brake_Status
+    0 "OFF"
+    1 "ON" ;
+
+VAL_ 416 Door_Status
+    0 "CLOSED"
+    1 "OPEN" ;
+
+VAL_ 416 ABS_Active
+    0 "INACTIVE"
+    1 "ACTIVE" ;
+
+VAL_ 432 Gear_Position
+    0 "PARK"
+    1 "REVERSE"
+    2 "NEUTRAL"
+    3 "DRIVE"
+    4 "1st"
+    5 "2nd"
+    6 "3rd"
+    7 "4th"
+    8 "5th" ;
+
+VAL_ 432 Shift_Status
+    0 "STABLE"
+    1 "UPSHIFT"
+    2 "DOWNSHIFT"
+    3 "ERROR" ;
+
+VAL_ 640 Door_FL_Status
+    0 "CLOSED"
+    1 "OPEN" ;
+
+VAL_ 640 Door_FR_Status
+    0 "CLOSED"
+    1 "OPEN" ;
+
+VAL_ 640 Door_RL_Status
+    0 "CLOSED"
+    1 "OPEN" ;
+
+VAL_ 640 Door_RR_Status
+    0 "CLOSED"
+    1 "OPEN" ;
+
+VAL_ 640 Headlight_Status
+    0 "OFF"
+    1 "PARKING"
+    2 "LOW_BEAM"
+    3 "HIGH_BEAM" ;
+
+VAL_ 640 Wiper_Status
+    0 "OFF"
+    1 "INTERMITTENT"
+    2 "LOW"
+    3 "HIGH" ;
+
+VAL_ 640 Horn_Status
+    0 "OFF"
+    1 "ON" ;
+
+VAL_ 640 Seat_Belt_Driver
+    0 "UNFASTENED"
+    1 "FASTENED" ;
+
+VAL_ 640 Seat_Belt_Passenger
+    0 "UNFASTENED"
+    1 "FASTENED" ;
+
+VAL_ 640 Airbag_Status
+    0 "NORMAL"
+    1 "DEPLOYED"
+    2 "FAULT"
+    3 "DISABLED" ;
+
+VAL_ 896 Lane_Departure
+    0 "OK"
+    1 "WARNING" ;
+
+VAL_ 896 Collision_Warning
+    0 "OK"
+    1 "WARNING" ;
+
+VAL_ 896 Adaptive_Cruise
+    0 "INACTIVE"
+    1 "ACTIVE" ;
+
+VAL_ 896 Camera_Status
+    0 "OFF"
+    1 "INITIALISING"
+    2 "ACTIVE"
+    3 "FAULT" ;
