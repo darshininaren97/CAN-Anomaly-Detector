@@ -1,0 +1,37 @@
+{
+  "summary": {
+    "contradictory_anomalies": 2,
+    "correlation_anomalies": 0,
+    "total_anomalies": 2
+  },
+  "anomalies": [
+    {
+      "timestamp": 4.023,
+      "rule_id": "R-001",
+      "anomaly_type": "Contradictory Signal",
+      "signals": [
+        "Vehicle_Speed",
+        "Engine_Status"
+      ],
+      "values": {
+        "Vehicle_Speed": 120.0,
+        "Engine_Status": 0
+      },
+      "reason": "Vehicle speed is greater than zero (120.00 km/h) while engine status is OFF"
+    },
+    {
+      "timestamp": 4.023,
+      "rule_id": "R-002",
+      "anomaly_type": "Contradictory Signal",
+      "signals": [
+        "Vehicle_Speed",
+        "Gear_Position"
+      ],
+      "values": {
+        "Vehicle_Speed": 120.0,
+        "Gear_Position": 0
+      },
+      "reason": "Vehicle is moving (120.00 km/h) while transmission indicates PARK"
+    }
+  ]
+}
