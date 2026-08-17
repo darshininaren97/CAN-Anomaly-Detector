@@ -1,0 +1,295 @@
+{
+  "summary": {
+    "total_frames": 559,
+    "total_can_ids": 4,
+    "total_anomalies": 6,
+    "critical_severity": 3,
+    "high_severity": 2,
+    "medium_severity": 1,
+    "low_severity": 0,
+    "anomaly_type_counts": {
+      "TIMING_FLOODING": 2,
+      "DUPLICATE_BURST": 2,
+      "TIMING_DEVIATION": 1,
+      "TIMING_TIMEOUT": 1
+    }
+  },
+  "profiles": [
+    {
+      "can_id": "0x110",
+      "can_id_int": 272,
+      "ecu": "ECM",
+      "sample_count": 101,
+      "nominal_period": 0.050044,
+      "mean_period": 0.050002,
+      "std_period": 0.000806,
+      "min_period": 0.048215,
+      "max_period": 0.051752,
+      "frames_per_second": 19.98,
+      "coefficient_of_variation": 0.0161
+    },
+    {
+      "can_id": "0x220",
+      "can_id_int": 544,
+      "ecu": "BCM",
+      "sample_count": 250,
+      "nominal_period": 0.020016,
+      "mean_period": 0.019999,
+      "std_period": 0.000388,
+      "min_period": 0.01908,
+      "max_period": 0.020891,
+      "frames_per_second": 49.96,
+      "coefficient_of_variation": 0.0194
+    },
+    {
+      "can_id": "0x464",
+      "can_id_int": 1124,
+      "ecu": "VSA",
+      "sample_count": 50,
+      "nominal_period": 0.099944,
+      "mean_period": 0.100005,
+      "std_period": 0.001256,
+      "min_period": 0.097279,
+      "max_period": 0.102667,
+      "frames_per_second": 10.01,
+      "coefficient_of_variation": 0.0126
+    },
+    {
+      "can_id": "0x330",
+      "can_id_int": 816,
+      "ecu": "TCU",
+      "sample_count": 50,
+      "nominal_period": 0.099708,
+      "mean_period": 0.100007,
+      "std_period": 0.0009,
+      "min_period": 0.098503,
+      "max_period": 0.101783,
+      "frames_per_second": 10.03,
+      "coefficient_of_variation": 0.009
+    }
+  ],
+  "ecu_profiles": [
+    {
+      "ecu": "ECM",
+      "message_count": 120,
+      "can_ids": [
+        "0x110"
+      ],
+      "nominal_frequency": 19.85,
+      "timing_variance": 1.8e-05,
+      "duplicate_rate": 0.0,
+      "timeout_occurrences": 0,
+      "timing_anomaly_count": 1
+    },
+    {
+      "ecu": "BCM",
+      "message_count": 306,
+      "can_ids": [
+        "0x220"
+      ],
+      "nominal_frequency": 50.97,
+      "timing_variance": 7e-06,
+      "duplicate_rate": 0.0033,
+      "timeout_occurrences": 0,
+      "timing_anomaly_count": 2
+    },
+    {
+      "ecu": "VSA",
+      "message_count": 84,
+      "can_ids": [
+        "0x464"
+      ],
+      "nominal_frequency": 13.95,
+      "timing_variance": 0.002,
+      "duplicate_rate": 0.0119,
+      "timeout_occurrences": 0,
+      "timing_anomaly_count": 2
+    },
+    {
+      "ecu": "TCU",
+      "message_count": 49,
+      "can_ids": [
+        "0x330"
+      ],
+      "nominal_frequency": 8.02,
+      "timing_variance": 0.029258,
+      "duplicate_rate": 0.0,
+      "timeout_occurrences": 1,
+      "timing_anomaly_count": 1
+    }
+  ],
+  "anomalies": [
+    {
+      "timestamp": 3.21,
+      "start_time": 3.21,
+      "end_time": 3.258,
+      "can_id": "0x464",
+      "ecu": "VSA",
+      "anomaly_type": "TIMING_FLOODING",
+      "severity": "CRITICAL",
+      "abnormal_frame_count": 25,
+      "observed_value": 0.002,
+      "expected_value": 0.099944,
+      "deviation": 0.98,
+      "nominal_period": 0.099944,
+      "observed_period": 0.002,
+      "diagnosis": "Abnormally high-frequency CAN transmission; possible flooding, replay-like activity, or ECU malfunction.",
+      "possible_causes": [
+        "CAN flooding",
+        "Replay-like transmission",
+        "ECU malfunction"
+      ],
+      "evidence": {
+        "nominal_period": 0.099944,
+        "observed_period": 0.002,
+        "repeat_count": 25,
+        "start_time": 3.21,
+        "end_time": 3.258,
+        "burst_duration": 0.048
+      }
+    },
+    {
+      "timestamp": 3.21,
+      "start_time": 3.21,
+      "end_time": 3.258,
+      "can_id": "0x464",
+      "ecu": "VSA",
+      "anomaly_type": "DUPLICATE_BURST",
+      "severity": "CRITICAL",
+      "abnormal_frame_count": 25,
+      "observed_value": 0.002,
+      "expected_value": 0.099944,
+      "deviation": 0.98,
+      "nominal_period": 0.099944,
+      "observed_period": 0.002,
+      "diagnosis": "Repeated identical payload burst transmitted at unusually high rate; possible replay attack or ECU sensor fault.",
+      "possible_causes": [
+        "Replay attack",
+        "ECU sensor latching fault",
+        "High-frequency replay injection"
+      ],
+      "evidence": {
+        "payload": "01A2000000000000",
+        "repeat_count": 25,
+        "average_interval": 0.002,
+        "nominal_period": 0.099944,
+        "start_time": 3.21,
+        "end_time": 3.258
+      }
+    },
+    {
+      "timestamp": 3.545,
+      "start_time": 3.44996,
+      "end_time": 3.545,
+      "can_id": "0x110",
+      "ecu": "ECM",
+      "anomaly_type": "TIMING_DEVIATION",
+      "severity": "MEDIUM",
+      "abnormal_frame_count": 1,
+      "observed_value": 0.09504,
+      "expected_value": 0.050044,
+      "deviation": 0.8991,
+      "nominal_period": 0.050044,
+      "observed_period": 0.09504,
+      "diagnosis": "Abnormal inter-frame timing interval: observed 0.0950s vs nominal 0.0500s (89.9% deviation).",
+      "possible_causes": [
+        "Clock drift or CPU scheduling jitter",
+        "Bus arbitration delay",
+        "Timing manipulation / injection"
+      ],
+      "evidence": {
+        "nominal_period": 0.050044,
+        "observed_period": 0.09504,
+        "relative_error": 0.8991,
+        "z_score": 55.8722
+      }
+    },
+    {
+      "timestamp": 4.005,
+      "start_time": 4.005,
+      "end_time": 4.026,
+      "can_id": "0x220",
+      "ecu": "BCM",
+      "anomaly_type": "TIMING_FLOODING",
+      "severity": "HIGH",
+      "abnormal_frame_count": 8,
+      "observed_value": 0.003,
+      "expected_value": 0.020016,
+      "deviation": 0.8501,
+      "nominal_period": 0.020016,
+      "observed_period": 0.003,
+      "diagnosis": "Abnormally high-frequency CAN transmission; possible flooding, replay-like activity, or ECU malfunction.",
+      "possible_causes": [
+        "CAN flooding",
+        "Replay-like transmission",
+        "ECU malfunction"
+      ],
+      "evidence": {
+        "nominal_period": 0.020016,
+        "observed_period": 0.003,
+        "repeat_count": 8,
+        "start_time": 4.005,
+        "end_time": 4.026,
+        "burst_duration": 0.021
+      }
+    },
+    {
+      "timestamp": 4.005,
+      "start_time": 4.005,
+      "end_time": 4.026,
+      "can_id": "0x220",
+      "ecu": "BCM",
+      "anomaly_type": "DUPLICATE_BURST",
+      "severity": "HIGH",
+      "abnormal_frame_count": 8,
+      "observed_value": 0.003,
+      "expected_value": 0.020016,
+      "deviation": 0.8501,
+      "nominal_period": 0.020016,
+      "observed_period": 0.003,
+      "diagnosis": "Repeated identical payload burst transmitted at unusually high rate; possible replay attack or ECU sensor fault.",
+      "possible_causes": [
+        "Replay attack",
+        "ECU sensor latching fault",
+        "High-frequency replay injection"
+      ],
+      "evidence": {
+        "payload": "AA55AA55AA55AA55",
+        "repeat_count": 8,
+        "average_interval": 0.003,
+        "nominal_period": 0.020016,
+        "start_time": 4.005,
+        "end_time": 4.026
+      }
+    },
+    {
+      "timestamp": 4.2,
+      "start_time": 2.914942,
+      "end_time": 4.2,
+      "can_id": "0x330",
+      "ecu": "TCU",
+      "anomaly_type": "TIMING_TIMEOUT",
+      "severity": "CRITICAL",
+      "abnormal_frame_count": 12,
+      "observed_value": 1.285058,
+      "expected_value": 0.099708,
+      "deviation": 11.8882,
+      "nominal_period": 0.099708,
+      "observed_period": 1.285058,
+      "diagnosis": "CAN message timeout detected; gap of 1.2851s exceeds nominal period 0.0997s (11 estimated missed frames).",
+      "possible_causes": [
+        "ECU offline/reset",
+        "CAN bus disconnection",
+        "Denial of service",
+        "ECU task starvation"
+      ],
+      "evidence": {
+        "nominal_period": 0.099708,
+        "observed_gap": 1.285058,
+        "missed_messages": 11,
+        "last_seen_timestamp": 2.914942,
+        "resumed_timestamp": 4.2
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "relative_deviation_threshold": 0.20,
+  "z_score_threshold": 3.0,
+  "flooding_ratio_threshold": 0.25,
+  "flooding_min_burst_count": 5,
+  "duplicate_max_interval_factor": 0.30,
+  "duplicate_min_repeat_count": 3,
+  "timeout_multiplier": 2.5,
+  "min_baseline_samples": 5
+}
