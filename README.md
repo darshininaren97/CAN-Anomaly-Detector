@@ -1,1 +1,1 @@
-# CAN-Anomaly-Analyser
+# CAN-Anomaly-Detector
